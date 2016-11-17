@@ -22,7 +22,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
-
+var passport = require('passport');
+var flash    = require('connect-flash');
+var session = require('session');
 // bring in the models
 var models = require('./models')
 
