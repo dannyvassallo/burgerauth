@@ -24,7 +24,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override')
 var passport = require('passport');
 var flash    = require('connect-flash');
-var session = require('session');
+var session = require('express-session');
 // bring in the models
 var models = require('./models')
 
