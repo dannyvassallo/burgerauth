@@ -36,3 +36,9 @@ module.exports = function(sequelize, DataTypes) {
   return User;
 };
 ```
+
+Install passport & local strategy
+
+```
+npm i -S passport passport-local
+```
