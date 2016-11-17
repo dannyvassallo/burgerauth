@@ -25,6 +25,8 @@ var methodOverride = require('method-override')
 var passport = require('passport');
 var flash    = require('connect-flash');
 var session = require('express-session');
+var cookieParser = require('cookie-parser');
+
 // bring in the models
 var models = require('./models')
 
@@ -34,6 +36,7 @@ models.sequelize.sync();
 var app = express();
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + '/public'));
+app.use(cookieParser()); // read cookies (needed for auth)
 
 // required for passport
 app.use(session({ secret: 'mySecretSession' }));
