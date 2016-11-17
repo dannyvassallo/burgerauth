@@ -6,14 +6,14 @@
 
 
 
-// Step 1: Ran this in the command line 
-//         $ sequelize migration:create --name burgerInsert 
+// Step 1: Ran this in the command line
+//         $ sequelize migration:create --name burgerInsert
 //
 // Step 2: Edited the up method of the migration file to add in five burgers
 //
 // Step 3: Edited the down method of the migration file to remove those burgers
 //
-// Step 4: Included a MySQL query in the down method to bring the primary ids 
+// Step 4: Included a MySQL query in the down method to bring the primary ids
 //         down to the lowest possible number. This prevents the occurrence
 //         of id gaps resulting from deleting the burger entries
 //
@@ -32,6 +32,12 @@ models.sequelize.sync();
 var app = express();
 //Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + '/public'));
+
+// required for passport
+app.use(session({ secret: 'mySecretSession' }));
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({

@@ -40,5 +40,5 @@ module.exports = function(sequelize, DataTypes) {
 Install passport, local strategy, express session
 
 ```
-npm i -S passport passport-local express-session
+npm i -S passport passport-local express-session connect-flash
 ```
