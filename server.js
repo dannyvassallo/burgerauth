@@ -63,8 +63,8 @@ app.use('/update', routes);
 app.use('/create', routes);
 
 app.get('/login', function(req, res) {
-    // render the page and pass in any flash data if it exists
-    res.render('login', { message: req.flash('loginMessage') });
+  // render the page and pass in any flash data if it exists
+  res.render('login', { message: req.flash('loginMessage') });
 });
 
 
@@ -72,4 +72,4 @@ app.get('/login', function(req, res) {
 var port = process.env.PORT || 3000;
 app.listen(port);
 
-console.log(module.exports)
+console.log(module.exports);
