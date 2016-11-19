@@ -39,6 +39,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(cookieParser()); // read cookies (needed for auth)
 
 // required for passport
+require('./config/passport')(passport);
 app.use(session({ secret: 'mySecretSession' }));
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -70,6 +71,14 @@ app.get('/login', function(req, res) {
 app.get('/register', function(req, res) {
   // render the page and pass in any flash data if it exists
   res.render('register', { message: req.flash('loginMessage') });
+});
+
+app.post('/users/create', function(req, res, next){
+  passport.authenticate('local-signup', function(error, user, info) {
+    if(error) { return res.status(500).json(error); }
+    if(!user) { return res.status(401).json(info.message); }
+    res.status(200).json(user);
+  })(req, res, next);
 });
 
 // listen on port 3000

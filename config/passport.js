@@ -2,7 +2,7 @@
 
 var passport = require('passport'),
 LocalStrategy = require('passport-local').Strategy,
-models = require('./models');
+models = require('../models');
 
 module.exports = function(app){
   // Serialize
